@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="localhost:3000">Danh sách sản phẩm</a>
+    <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://localhost:8000/addproduct">Thêm sản phẩm</a>
+        </li>
+        
+      </ul>
+   
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav">
+        <li class="nav-item" style="display: inline-block;">
+          <a  aria-current="page" href="http://localhost:8000/users/dangnhap" style="text-decoration: none; color: black;">Đăng nhập</a>
+          <a  aria-current="page" href="http://localhost:8000/users/dangky" style="text-decoration: none;color: black;">Đăng ký</a>
+        </li>
+         
+      </ul>
+
+    </div>
+    </nav>
+
+
+<table class="table" style="margin-top: 5px;">
+  <thead>
+    <tr>
+      <th scope="col">MaSP</th>
+      <th scope="col">TenSP</th>
+      <th scope="col">LoaiSP</th>
+      <th scope="col">Don gia</th>
+      <th scope="col">Hinh anh</th>
+      <th scope="col">Mau Sac</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+    <tr>
+      <th scope="row">{{this.masp}}</th>
+      <td>{{this.tensp}}</td>
+      <td>{{this.loaisp}}</td>
+      <td>{{this.price}}</td>
+      <td><img src="{{this.image}}" alt=""></td>
+      <td>{{this.color}}</td>
+      <td><button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{this._id}}">Xóa</button>
+  
+  <div class="modal fade" id="exampleModal{{this._id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xóa</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      Bạn có chắc muốn xóa không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="addproduct/delete/{{this._id}}"  class="btn btn-primary">Save changes</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+      
+      
+      |  <a href="updateproduct/{{this._id}}" class="btn btn-outline-info">Sửa</a>
+      </td>
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>
+
+
+
+
+</body>
+
+<script>
+   
+</script>
+</html>
